@@ -64,7 +64,7 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
-      cedula: ['', Validators.required],
+      cedula: ['', [Validators.required, Validators.minLength(10)]],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       direccion: ['', Validators.required],
@@ -93,7 +93,7 @@ export class AppComponent {
     this.userData.n_telefono = this.loginForm.get('n_telefono')?.value;
 
     this.formSubmitted = true;
-    
+
     if(this.loginForm.valid) {
       console.log(this.userData);
     } else {
